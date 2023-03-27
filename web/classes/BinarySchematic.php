@@ -107,22 +107,22 @@ class BinarySchematic
                 $b = $rgbValue & 0xFF;
 
                 // black pixels
-                if ($r <= 5 && $g <= 5 && $b <= 5) {
+                if ($r <= 15 && $g <= 15 && $b <= 15) {
                     $binaryImageArray[$j][$i] = 0;
                     // white pixels
-                } elseif ($r >= 250 && $g >= 250 && $b >= 250) {
+                } elseif ($r >= 240 && $g >= 240 && $b >= 240) {
                     $binaryImageArray[$j][$i] = 1;
                     // red pixels
-                } elseif ($r >= 250 && $g <= 10 && $b <= 10) {
+                } elseif ($r >= 240 && $g <= 15 && $b <= 15) {
                     $binaryImageArray[$j][$i] = 2;
                     // green pixels
-                } elseif ($r <= 10 && $g >= 250 && $b <= 10) {
+                } elseif ($r <= 15 && $g >= 240 && $b <= 15) {
                     $binaryImageArray[$j][$i] = 3;
                     // blue pixels
-                } elseif ($r <= 10 && $g <= 10 && $b >= 250) {
+                } elseif ($r <= 15 && $g <= 15 && $b >= 240) {
                     $binaryImageArray[$j][$i] = 4;
                 } else {
-                    echo "Color not registered, R: $r G: $g B: $b";
+                    echo "Color not registered, R: $r G: $g B: $b <br>";
                 }
             }
         }
