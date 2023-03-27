@@ -50,6 +50,12 @@ function refill(chestNum, turtleCurrentWidthPos, turtleCurrentHeightPos)
         turtle.turnRight()
     end
 
+    if chestNum == 4 then
+        turtle.turnRight()
+        turtle.turnRight()
+        turtle.turnRight()
+    end
+
     -- collects the item
     turtle.suck()
 
@@ -66,6 +72,10 @@ function refill(chestNum, turtleCurrentWidthPos, turtleCurrentHeightPos)
     -- turns back to original position
     if chestNum == 3 then
         turtle.turnRight()
+        turtle.turnRight()
+    end
+
+    if chestNum == 4 then
         turtle.turnRight()
     end
 
@@ -109,6 +119,10 @@ for i=1, height do
 
         if schematic[i][j] == 2 then
             turtle.select(9)        
+        end
+
+        if schematic[i][j] == 3 then
+            turtle.select(13)        
         end
         
         if not turtle.placeDown() then
