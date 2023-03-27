@@ -116,10 +116,10 @@ class BinarySchematic
                 } elseif ($r >= 250 && $g <= 10 && $b <= 10) {
                     $binaryImageArray[$j][$i] = 2;
                     // green pixels
-                } elseif ($r >= 10 && $g <= 250 && $b <= 10) {
+                } elseif ($r <= 10 && $g >= 250 && $b <= 10) {
                     $binaryImageArray[$j][$i] = 3;
                     // blue pixels
-                } elseif ($r >= 10 && $g <= 10 && $b <= 250) {
+                } elseif ($r <= 10 && $g <= 10 && $b >= 250) {
                     $binaryImageArray[$j][$i] = 4;
                 } else {
                     echo "Color not registered, R: $r G: $g B: $b";
