@@ -36,14 +36,17 @@ class Schematics extends Dbh
         }
 
         $id = $schematic['id'];
+        $webName = "test";
         $width = $schematic['width'];
         $height = $schematic['height'];
         $objectData = $schematic['objectData'];
+        $imgPath = "test";
 
-        $sql = "INSERT INTO schematics (id, width, height, objectData) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO schematics (id, webName, width, height, objectData, imgPath) VALUES (?,?,?,?,?,?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$id, $width, $height, $objectData]);
+        $stmt->execute([$id, $webName, $width, $height, $objectData, $imgPath]);
     }
+
 
     /**
      * Updates existing schematic data within the database.
