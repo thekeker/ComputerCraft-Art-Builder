@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header, main, footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main, footer {
+    align-items: center;
+}
+
+header, footer {
+    justify-content: center;
+}
+
+header {
+    padding: 0 0.5rem;
+    height: 5vh;
+    background-color: #667;
+}
+
+main {
+    height: 90vh;
+    background-color: cornflowerblue;
+}
+
+#datatypeSelectionForm {
+    margin: 1.5rem 0;
+}
+
+#uploadImage, #uploadJson {
+    display: none;
+}
+
+#uploadImageLabel {
+    padding: 1rem;
+    background-color: #555;
+    color: white;
+}
+
+#uploadJsonLabel {
+    padding: 1rem;
+    background-color: white;
+}
+
+#uploadJsonFormContainer {
+    display: none;
+    text-align: center;
+}
+
+#uploadJsonForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#jsonSchematicTextArea {
+    resize: none;
+    width: 60vw;
+    height: 40vh;
+}
+
+footer {
+    font-weight: bold;
+    height: 5vh;
+    background-color: #667;
+}
