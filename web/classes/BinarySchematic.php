@@ -36,6 +36,9 @@ class BinarySchematic
 
         $sc = new SchematicsController();
         $sc->uploadJpgBinarySchematic($this->objectID, $imageWidth, $imageHeight, $jsonBinaryArray);
+        echo "Your schematic has been uploaded!: " . $this->objectID . "<br><pre?>";
+        print_r($binaryImageArray);
+        echo "</pre>";
     }
 
     private function uploadImage()
@@ -107,8 +110,10 @@ class BinarySchematic
                     $binaryImageArray[$j][$i] = 0;
                 } elseif ($r >= 250 && $g >= 250 && $b >= 250) {
                     $binaryImageArray[$j][$i] = 1;
+                } elseif ($r >= 250 && $g <= 10 && $b <= 10) {
+                    $binaryImageArray[$j][$i] = 2;
                 } else {
-                    break 2;
+                    echo "R: $r G: $g B: $b";
                 }
             }
         }
