@@ -38,23 +38,38 @@ function refill(chestNum, turtleCurrentWidthPos, turtleCurrentHeightPos)
     end
 
     if chestNum == 1 then
-        turtle.turnLeft()
+        sleep(1)
     end
-    
+
     if chestNum == 2 then
         turtle.turnRight()
     end
+    
+    if chestNum == 3 then
+        turtle.turnRight()
+        turtle.turnRight()
+    end
 
+    -- collects the item
     turtle.suck()
 
+    -- turns back to original position
     if chestNum == 1 then
-        turtle.turnRight()
+        sleep(1)
     end
-    
+
+    -- turns back to original position
     if chestNum == 2 then
         turtle.turnLeft()
     end
+    
+    -- turns back to original position
+    if chestNum == 3 then
+        turtle.turnRight()
+        turtle.turnRight()
+    end
 
+    -- moves away from chests and continues building
     for i=1, turtleCurrentHeightPos do
         turtle.up()
     end
@@ -80,6 +95,7 @@ turtle.forward()
 turtle.forward()
 turtle.turnLeft()
 
+-- code that places the blocks
 for i=1, height do    
     for j=1, width do
         
@@ -89,6 +105,10 @@ for i=1, height do
         
         if schematic[i][j] == 1 then
             turtle.select(5)        
+        end
+
+        if schematic[i][j] == 2 then
+            turtle.select(9)        
         end
         
         if not turtle.placeDown() then
