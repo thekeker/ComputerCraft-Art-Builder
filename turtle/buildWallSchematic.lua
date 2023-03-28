@@ -60,6 +60,7 @@ function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
 
     -- fill fuel slot if required
     if blocksToFillFuel > 0 then
+        turtle.select(fuelSlot)
         turtle.up()
         repeatCmd("turtle.turnRight()", 2)
         turtle.select(firstBlockSlot)
