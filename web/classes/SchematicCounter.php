@@ -42,10 +42,10 @@ class SchematicCounter extends SchematicsView
             }
             // echo "<br>";
         }
-        echo "1st Chest will require: " . $blockOneCount . "<br>";
-        echo "2nd Chest will require: " . $blockTwoCount . "<br>";
-        echo "3rd Chest will require: " . $blockThreeCount . "<br>";
-        echo "4th Chest will require: " . $blockFourCount . "<br>";
+        echo "1st Chest (Black pixels) will require: " . $blockOneCount . "<br>";
+        echo "2nd Chest (White pixels) will require: " . $blockTwoCount . "<br>";
+        echo "3rd Chest (Red pixels) will require: " . $blockThreeCount . "<br>";
+        echo "4th Chest (Green pixels) will require: " . $blockFourCount . "<br>";
         echo "Total Block Count: $totalBlocks";
     }
 }
