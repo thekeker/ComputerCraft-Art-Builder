@@ -67,7 +67,6 @@ function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
         turtle.suck(blocksToFillFuel)
         repeatCmd("turtle.turnRight()", 2)
         turtle.down()
-        print("out of fuel blocks")
     end
 
     -- fill first block slot if required
