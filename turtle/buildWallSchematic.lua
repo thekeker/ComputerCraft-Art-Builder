@@ -2,7 +2,7 @@ os.loadAPI("json")
 term.clear()
 term.setCursorPos(1,1)
 
-local fuelSlot = 1
+local fuelSlot = 16
 local firstBlockSlot = 1
 local secondBlockSlot = 5
 local thirdBlockSlot = 9
@@ -134,8 +134,8 @@ for i=1, height do
     for j=1, width do
 
         while turtle.getFuelLevel() < minimumFuel do
-            if not turtle.refuel(2) then
-                refuel(-1,turtleCurrentWidthPos,turtleCurrentHeightPos)
+            if not turtle.refuel(fuelSlot) then
+                refill(turtleCurrentWidthPos,turtleCurrentHeightPos)
             end
         end
 
