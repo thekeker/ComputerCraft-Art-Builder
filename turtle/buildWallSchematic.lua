@@ -140,23 +140,22 @@ for i=1, height do
         end
 
         if schematic[i][j] == 0 then
-            turtle.select(1)
+            turtle.select(firstBlockSlot)
         end
         
         if schematic[i][j] == 1 then
-            turtle.select(5)        
+            turtle.select(secondBlockSlot)        
         end
 
         if schematic[i][j] == 2 then
-            turtle.select(9)        
+            turtle.select(thirdBlockSlot)        
         end
 
         if schematic[i][j] == 3 then
-            turtle.select(13)        
+            turtle.select(fourthBlockSlot)        
         end
         
         if not turtle.placeDown() then
-            chestNumber = schematic[i][j] + 1
             refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
             turtle.placeDown()
         end
