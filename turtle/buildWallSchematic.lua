@@ -37,6 +37,12 @@ function refill(chestNum, turtleCurrentWidthPos, turtleCurrentHeightPos)
         turtle.down()
     end
 
+    if chestNum == -1 then
+        turtle.up()
+        turtle.turnRight()
+        turtle.turnRight()
+    end
+
     if chestNum == 1 then
         sleep(1)
     end
@@ -58,6 +64,13 @@ function refill(chestNum, turtleCurrentWidthPos, turtleCurrentHeightPos)
 
     -- collects the item
     turtle.suck()
+
+    if chestNum == -1 then
+        turtle.refuel()
+        turtle.down()
+        turtle.turnRight()
+        turtle.turnRight()
+    end
 
     -- turns back to original position
     if chestNum == 1 then
@@ -108,7 +121,13 @@ turtle.turnLeft()
 -- code that places the blocks
 for i=1, height do    
     for j=1, width do
-        
+
+        while turtle.getFuelLevel() < minimumFuel do
+            if not turtle.refuel() then
+                refuel(-1,turtleCurrentWidthPos,turtleCurrentHeightPos)
+            end
+        end
+
         if schematic[i][j] == 0 then
             turtle.select(1)
         end
