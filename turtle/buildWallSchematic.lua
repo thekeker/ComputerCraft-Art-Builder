@@ -66,7 +66,7 @@ function refill(chestNum, turtleCurrentWidthPos, turtleCurrentHeightPos)
     turtle.suck()
 
     if chestNum == -1 then
-        turtle.refuel()
+        turtle.refuel(2)
         turtle.down()
         turtle.turnRight()
         turtle.turnRight()
@@ -123,7 +123,7 @@ for i=1, height do
     for j=1, width do
 
         while turtle.getFuelLevel() < minimumFuel do
-            if not turtle.refuel() then
+            if not turtle.refuel(2) then
                 refuel(-1,turtleCurrentWidthPos,turtleCurrentHeightPos)
             end
         end
