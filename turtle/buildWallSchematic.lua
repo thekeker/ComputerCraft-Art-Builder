@@ -136,6 +136,7 @@ for i=1, height do
         while turtle.getFuelLevel() < minimumFuel do
             if not turtle.refuel(fuelSlot) then
                 refill(turtleCurrentWidthPos,turtleCurrentHeightPos)
+                turtle.refuel()
             end
         end
 
