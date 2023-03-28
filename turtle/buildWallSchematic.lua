@@ -2,6 +2,12 @@ os.loadAPI("json")
 term.clear()
 term.setCursorPos(1,1)
 
+local fuelSlot = 1
+local firstBlockSlot = 1
+local secondBlockSlot = 5
+local thirdBlockSlot = 9
+local fourthBlockSlot = 13
+
 print("Please enter your Schematic ID.")
 local schematicId = read()
 print("Enter Width")
@@ -22,7 +28,22 @@ function getData()
     return schematicObject
 end
 
-function refill(chestNum, turtleCurrentWidthPos, turtleCurrentHeightPos)
+function repeatCmd(command, amount)
+    local func = loadstring(command)
+    for i=1, amount do
+        func()
+    end
+end
+
+function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
+    local currentBlockSlot = turtle.getSelectedSlot()
+
+    local blocksToFillFuel = turtle.getItemSpace(fuelSlot)
+    local blocksToFillFirstBlock = turtle.getItemSpace(firstBlockSlot)
+    local blocksToFillSecondBlock = turtle.getItemSpace(secondBlockSlot)
+    local blocksToFillThirdBlock = turtle.getItemSpace(thirdBlockSlot)
+    local blocksToFillFourthBlock = turtle.getItemSpace(fourthBlockSlot)
+    
     -- move back to right topmost corner
     for i=1, turtleCurrentWidthPos-1 do
         turtle.back()
@@ -30,86 +51,76 @@ function refill(chestNum, turtleCurrentWidthPos, turtleCurrentHeightPos)
 
     -- turn to face rear of build and reorient with origin pos
     turtle.turnRight()
-    turtle.back()
-    turtle.back()
+    repeatCmd("turtle.back()", 2)
+
     -- move to chests
     for i=1, turtleCurrentHeightPos do
         turtle.down()
     end
 
-    if chestNum == -1 then
+    -- fill fuel slot if required
+    if blocksToFillFuel > 0 then
         turtle.up()
-        turtle.turnRight()
-        turtle.turnRight()
-    end
-
-    if chestNum == 1 then
-        sleep(1)
-    end
-
-    if chestNum == 2 then
-        turtle.turnRight()
-    end
-    
-    if chestNum == 3 then
-        turtle.turnRight()
-        turtle.turnRight()
-    end
-
-    if chestNum == 4 then
-        turtle.turnRight()
-        turtle.turnRight()
-        turtle.turnRight()
-    end
-
-    -- collects the item
-    turtle.suck()
-
-    if chestNum == -1 then
-        turtle.refuel(2)
+        repeatCmd("turtle.turnRight()", 2)
+        turtle.select(firstBlockSlot)
+        turtle.suck(blocksToFillFuel)
+        repeatCmd("turtle.turnRight()", 2)
         turtle.down()
-        turtle.turnRight()
-        turtle.turnRight()
+        print("out of fuel blocks")
     end
 
-    -- turns back to original position
-    if chestNum == 1 then
-        sleep(1)
+    -- fill first block slot if required
+    if blocksToFillFirstBlock > 0 then
+        turtle.select(firstBlockSlot)
+        turtle.suck(blocksToFillFirstBlock)
     end
 
-    -- turns back to original position
-    if chestNum == 2 then
-        turtle.turnLeft()
-    end
-    
-    -- turns back to original position
-    if chestNum == 3 then
-        turtle.turnRight()
-        turtle.turnRight()
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill second block slot if required
+    if blocksToFillSecondBlock > 0 then
+        turtle.select(secondBlockSlot)
+        turtle.suck(blocksToFillFirstBlock)
     end
 
-    if chestNum == 4 then
-        turtle.turnRight()
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill third block slot if required
+    if blocksToFillThirdBlock > 0 then
+        turtle.select(thirdBlockSlot)
+        turtle.suck(blocksToFillFirstBlock)
     end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill fourth block slot if required
+    if blocksToFillFourthBlock > 0 then
+        turtle.select(fourthBlockSlot)
+        turtle.suck(blocksToFillFirstBlock)
+    end
+
+    -- orient to origin
+    turtle.turnRight()
 
     -- moves away from chests and continues building
     for i=1, turtleCurrentHeightPos do
         turtle.up()
     end
-
-    turtle.forward()
-    turtle.forward()
+    repeatCmd("turtle.forward()", 2)
     turtle.turnLeft()
     for i=1, turtleCurrentWidthPos-1 do
         turtle.forward()
     end
-    turtle.placeDown()
+    turtle.select(currentBlockSlot)
 end
 
 local schematic = getData()
 
 turtle.up()
-print("Moving up")
+print("Starting build... Kick back and relax")
 
 local turtleCurrentWidthPos = 1
 local turtleCurrentHeightPos = 1
@@ -146,7 +157,8 @@ for i=1, height do
         
         if not turtle.placeDown() then
             chestNumber = schematic[i][j] + 1
-            refill(chestNumber, turtleCurrentWidthPos, turtleCurrentHeightPos)
+            refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
+            turtle.placeDown()
         end
 
         turtle.forward()
