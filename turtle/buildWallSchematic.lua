@@ -7,6 +7,7 @@ local firstBlockSlot = 1
 local secondBlockSlot = 5
 local thirdBlockSlot = 9
 local fourthBlockSlot = 13
+local minimumFuel = 1000
 
 print("Please enter your Schematic ID.")
 local schematicId = read()
