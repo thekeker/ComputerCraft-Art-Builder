@@ -64,7 +64,7 @@ function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
         turtle.select(fuelSlot)
         turtle.up()
         repeatCmd("turtle.turnRight()", 2)
-        turtle.select(firstBlockSlot)
+        turtle.select(fuelSlot)
         turtle.suck(blocksToFillFuel)
         repeatCmd("turtle.turnRight()", 2)
         turtle.down()
@@ -82,7 +82,7 @@ function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
     -- fill second block slot if required
     if blocksToFillSecondBlock > 0 then
         turtle.select(secondBlockSlot)
-        turtle.suck(blocksToFillFirstBlock)
+        turtle.suck(blocksToFillSecondBlock)
     end
 
     -- orient to next slot
@@ -91,7 +91,7 @@ function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
     -- fill third block slot if required
     if blocksToFillThirdBlock > 0 then
         turtle.select(thirdBlockSlot)
-        turtle.suck(blocksToFillFirstBlock)
+        turtle.suck(blocksToFillThirdBlock)
     end
 
     -- orient to next slot
@@ -100,7 +100,7 @@ function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
     -- fill fourth block slot if required
     if blocksToFillFourthBlock > 0 then
         turtle.select(fourthBlockSlot)
-        turtle.suck(blocksToFillFirstBlock)
+        turtle.suck(blocksToFillFourthBlock)
     end
 
     -- orient to origin
