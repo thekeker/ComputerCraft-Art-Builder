@@ -36,9 +36,7 @@ class BinarySchematic
 
         $sc = new SchematicsController();
         $sc->uploadJpgBinarySchematic($this->objectID, $imageWidth, $imageHeight, $jsonBinaryArray);
-        echo "Your schematic has been uploaded!: " . $this->objectID . "<br><pre?>";
-        print_r($binaryImageArray);
-        echo "</pre>";
+        echo "Your schematic has been uploaded!: " . $this->objectID . "<br>";
     }
 
     private function uploadImage()
@@ -107,29 +105,68 @@ class BinarySchematic
                 $b = $rgbValue & 0xFF;
 
                 // black pixels
-                if ($r <= 15 && $g <= 15 && $b <= 15) {
+                if (
+                    $r <= 15
+                    && $g <= 15
+                    && $b <= 15
+                ) {
                     $binaryImageArray[$j][$i] = 0;
+
                     // white pixels
-                } elseif ($r >= 240 && $g >= 240 && $b >= 240) {
+                } elseif (
+                    $r >= 240
+                    && $g >= 240
+                    && $b >= 240
+                ) {
                     $binaryImageArray[$j][$i] = 1;
+
                     // red pixels
-                } elseif ($r >= 240 && $g <= 15 && $b <= 15) {
+                } elseif (
+                    $r >= 240
+                    && $g <= 15
+                    && $b <= 15
+                ) {
                     $binaryImageArray[$j][$i] = 2;
+
                     // green pixels
-                } elseif ($r <= 15 && $g >= 240 && $b <= 15) {
+                } elseif (
+                    $r <= 15
+                    && $g >= 240
+                    && $b <= 15
+                ) {
                     $binaryImageArray[$j][$i] = 3;
+
                     // blue pixels
-                } elseif ($r <= 15 && $g <= 60 && $g >= 75 && $b >= 240) {
+                } elseif (
+                    $r <= 15
+                    && $g >= 60 && $g <= 75
+                    && $b >= 240
+                ) {
                     $binaryImageArray[$j][$i] = 4;
+
                     // yellow pixels
-                } elseif ($r >= 225 && $r <= 250 && $b <= 15) {
+                } elseif (
+                    $r >= 225
+                    && $r <= 250
+                    && $b <= 15
+                ) {
                     $binaryImageArray[$j][$i] = 5;
+
                     // cyan pixels
-                } elseif ($r <= 100 && $r >= 150 && $g <= 230 && $g >= 250 && $b >= 240) {
+                } elseif (
+                    $r >= 100 && $r <= 150
+                    && $g >= 230 && $g <= 250
+                    && $b >= 240
+                ) {
                     $binaryImageArray[$j][$i] = 6;
+
                     // orange pixels
-                } elseif ($r >= 240 && $g <= 155 && $g >= 190 && $b <= 15) {
-                    $binaryImageArray[$j][$i] = 6;
+                } elseif (
+                    $r >= 240
+                    && $g >= 155 && $g <= 190
+                    && $b <= 15
+                ) {
+                    $binaryImageArray[$j][$i] = 7;
                 } else {
                     echo "Color not registered, R: $r G: $g B: $b <br>";
                 }
