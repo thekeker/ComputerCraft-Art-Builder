@@ -119,8 +119,17 @@ class BinarySchematic
                 } elseif ($r <= 15 && $g >= 240 && $b <= 15) {
                     $binaryImageArray[$j][$i] = 3;
                     // blue pixels
-                } elseif ($r <= 15 && $g <= 15 && $b >= 240) {
+                } elseif ($r <= 15 && $g <= 60 && $g >= 75 && $b >= 240) {
                     $binaryImageArray[$j][$i] = 4;
+                    // yellow pixels
+                } elseif ($r >= 225 && $r <= 250 && $b <= 15) {
+                    $binaryImageArray[$j][$i] = 5;
+                    // cyan pixels
+                } elseif ($r <= 100 && $r >= 150 && $g <= 230 && $g >= 250 && $b >= 240) {
+                    $binaryImageArray[$j][$i] = 6;
+                    // orange pixels
+                } elseif ($r >= 240 && $g <= 155 && $g >= 190 && $b <= 15) {
+                    $binaryImageArray[$j][$i] = 6;
                 } else {
                     echo "Color not registered, R: $r G: $g B: $b <br>";
                 }
