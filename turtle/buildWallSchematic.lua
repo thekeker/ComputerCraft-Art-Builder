@@ -7,6 +7,10 @@ local firstBlockSlot = 1
 local secondBlockSlot = 5
 local thirdBlockSlot = 9
 local fourthBlockSlot = 13
+local fifthBlockSlot = 2
+local sixthBlockSlot = 6
+local seventhBlockSlot = 10
+local eighthBlockSlot = 14
 local minimumFuel = 1000
 
 print("Please enter your Schematic ID.")
@@ -44,6 +48,10 @@ function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
     local blocksToFillSecondBlock = turtle.getItemSpace(secondBlockSlot)
     local blocksToFillThirdBlock = turtle.getItemSpace(thirdBlockSlot)
     local blocksToFillFourthBlock = turtle.getItemSpace(fourthBlockSlot)
+    local blocksToFillFifthBlock = turtle.getItemSpace(fifthBlockSlot)
+    local blocksToFillSixthBlock = turtle.getItemSpace(sixthBlockSlot)
+    local blocksToFillSeventhBlock = turtle.getItemSpace(seventhBlockSlot)
+    local blocksToFillEighthBlock = turtle.getItemSpace(eighthBlockSlot)
     
     -- move back to right topmost corner
     for i=1, turtleCurrentWidthPos-1 do
@@ -106,6 +114,46 @@ function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
     -- orient to origin
     turtle.turnRight()
 
+    -- orient to second row of chests
+    turtle.down()
+
+    -- fill fifth block slot if required
+    if blocksToFillFifthBlock > 0 then
+        turtle.select(fifthBlockSlot)
+        turtle.suck(blocksToFillFifthBlock)
+    end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill sixth block slot if required
+    if blocksToFillSixthBlock > 0 then
+        turtle.select(sixthBlockSlot)
+        turtle.suck(blocksToFillSixthBlock)
+    end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill seventh block slot if required
+    if blocksToFillSeventhBlock > 0 then
+        turtle.select(seventhBlockSlot)
+        turtle.suck(blocksToFillSeventhBlock)
+    end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill eighth block slot if required
+    if blocksToFillEighthBlock > 0 then
+        turtle.select(eighthBlockSlot)
+        turtle.suck(blocksToFillEighthBlock)
+    end
+
+    -- orient to origin
+    turtle.turnRight()
+    turtle.up()
+
     -- moves away from chests and continues building
     for i=1, turtleCurrentHeightPos do
         turtle.up()
@@ -146,15 +194,31 @@ for i=1, height do
         end
         
         if schematic[i][j] == 1 then
-            turtle.select(secondBlockSlot)        
+            turtle.select(secondBlockSlot)
         end
 
         if schematic[i][j] == 2 then
-            turtle.select(thirdBlockSlot)        
+            turtle.select(thirdBlockSlot)
         end
 
         if schematic[i][j] == 3 then
-            turtle.select(fourthBlockSlot)        
+            turtle.select(fourthBlockSlot)
+        end
+        
+        if schematic[i][j] == 4 then
+            turtle.select(fifthBlockSlot)
+        end
+        
+        if schematic[i][j] == 5 then
+            turtle.select(sixthBlockSlot)
+        end
+        
+        if schematic[i][j] == 6 then
+            turtle.select(seventhBlockSlot)
+        end
+        
+        if schematic[i][j] == 7 then
+            turtle.select(eighthBlockSlot)
         end
         
         if not turtle.placeDown() then
