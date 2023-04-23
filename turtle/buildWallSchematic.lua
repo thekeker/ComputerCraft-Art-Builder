@@ -40,7 +40,7 @@ function repeatCmd(command, amount)
     end
 end
 
-local initializeInventory()
+function initializeInventory()
     local blocksToFillFuel = turtle.getItemSpace(fuelSlot)
     local blocksToFillFirstBlock = turtle.getItemSpace(firstBlockSlot)
     local blocksToFillSecondBlock = turtle.getItemSpace(secondBlockSlot)
