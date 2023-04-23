@@ -40,6 +40,105 @@ function repeatCmd(command, amount)
     end
 end
 
+local initializeInventory()
+    local blocksToFillFuel = turtle.getItemSpace(fuelSlot)
+    local blocksToFillFirstBlock = turtle.getItemSpace(firstBlockSlot)
+    local blocksToFillSecondBlock = turtle.getItemSpace(secondBlockSlot)
+    local blocksToFillThirdBlock = turtle.getItemSpace(thirdBlockSlot)
+    local blocksToFillFourthBlock = turtle.getItemSpace(fourthBlockSlot)
+    local blocksToFillFifthBlock = turtle.getItemSpace(fifthBlockSlot)
+    local blocksToFillSixthBlock = turtle.getItemSpace(sixthBlockSlot)
+    local blocksToFillSeventhBlock = turtle.getItemSpace(seventhBlockSlot)
+    local blocksToFillEighthBlock = turtle.getItemSpace(eighthBlockSlot)
+
+    -- fill fuel slot if required
+    if blocksToFillFuel > 0 then
+        turtle.select(fuelSlot)
+        turtle.up()
+        repeatCmd("turtle.turnRight()", 2)
+        turtle.select(fuelSlot)
+        turtle.suck(blocksToFillFuel)
+        repeatCmd("turtle.turnRight()", 2)
+        turtle.down()
+    end
+
+    -- fill first block slot if required
+    if blocksToFillFirstBlock > 0 then
+        turtle.select(firstBlockSlot)
+        turtle.suck(blocksToFillFirstBlock)
+    end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill second block slot if required
+    if blocksToFillSecondBlock > 0 then
+        turtle.select(secondBlockSlot)
+        turtle.suck(blocksToFillSecondBlock)
+    end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill third block slot if required
+    if blocksToFillThirdBlock > 0 then
+        turtle.select(thirdBlockSlot)
+        turtle.suck(blocksToFillThirdBlock)
+    end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill fourth block slot if required
+    if blocksToFillFourthBlock > 0 then
+        turtle.select(fourthBlockSlot)
+        turtle.suck(blocksToFillFourthBlock)
+    end
+
+    -- orient to origin
+    turtle.turnRight()
+
+    -- orient to second row of chests
+    turtle.down()
+
+    -- fill fifth block slot if required
+    if blocksToFillFifthBlock > 0 then
+        turtle.select(fifthBlockSlot)
+        turtle.suck(blocksToFillFifthBlock)
+    end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill sixth block slot if required
+    if blocksToFillSixthBlock > 0 then
+        turtle.select(sixthBlockSlot)
+        turtle.suck(blocksToFillSixthBlock)
+    end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill seventh block slot if required
+    if blocksToFillSeventhBlock > 0 then
+        turtle.select(seventhBlockSlot)
+        turtle.suck(blocksToFillSeventhBlock)
+    end
+
+    -- orient to next slot
+    turtle.turnRight()
+
+    -- fill eighth block slot if required
+    if blocksToFillEighthBlock > 0 then
+        turtle.select(eighthBlockSlot)
+        turtle.suck(blocksToFillEighthBlock)
+    end
+
+    -- orient to origin
+    turtle.turnRight()
+    turtle.up()
+end
+
 function refill(turtleCurrentWidthPos, turtleCurrentHeightPos)
     local currentBlockSlot = turtle.getSelectedSlot()
 
@@ -170,6 +269,7 @@ local schematic = getData()
 
 turtle.up()
 print("Starting build... Kick back and relax")
+initializeInventory()
 
 local turtleCurrentWidthPos = 1
 local turtleCurrentHeightPos = 1
